@@ -7,7 +7,6 @@ import CollectionConfig from '../../../../smart-contract/config/CollectionConfig
 import NetworkConfigInterface from '../../../../smart-contract/lib/NetworkConfigInterface';
 import CollectionStatus from './CollectionStatus';
 import MintWidget from './MintWidget';
-import Whitelist from '../lib/Whitelist';
 
 const ContractAbi = require('../../../../smart-contract/artifacts/contracts/' + CollectionConfig.contractName + '.sol/' + CollectionConfig.contractName + '.json').abi;
 
@@ -23,10 +22,6 @@ interface State {
   maxMintAmountPerTx: number;
   tokenPrice: BigNumber;
   isPaused: boolean;
-  isWhitelistMintEnabled: boolean;
-  isUserInWhitelist: boolean;
-  merkleProofManualAddress: string;
-  merkleProofManualAddressFeedbackMessage: string|JSX.Element|null;
   errorMessage: string|JSX.Element|null;
 }
 
@@ -39,10 +34,6 @@ const defaultState: State = {
   maxMintAmountPerTx: 0,
   tokenPrice: BigNumber.from(0),
   isPaused: true,
-  isWhitelistMintEnabled: false,
-  isUserInWhitelist: false,
-  merkleProofManualAddress: '',
-  merkleProofManualAddressFeedbackMessage: null,
   errorMessage: null,
 };
 
@@ -90,15 +81,6 @@ export default class Dapp extends React.Component<Props, State> {
     }
   }
 
-  async whitelistMintTokens(amount: number): Promise<void>
-  {
-    try {
-      await this.contract.whitelistMint(amount, Whitelist.getProofForAddress(this.state.userAddress!), {value: this.state.tokenPrice.mul(amount)});
-    } catch (e) {
-      this.setError(e);
-    }
-  }
-
   private isWalletConnected(): boolean
   {
     return this.state.userAddress !== null;
@@ -117,29 +99,6 @@ export default class Dapp extends React.Component<Props, State> {
   private isNotMainnet(): boolean
   {
     return this.state.network !== null && this.state.network.chainId !== CollectionConfig.mainnet.chainId;
-  }
-
-  private copyMerkleProofToClipboard(): void
-  {
-    const merkleProof = Whitelist.getRawProofForAddress(this.state.userAddress ?? this.state.merkleProofManualAddress);
-
-    if (merkleProof.length < 1) {
-      this.setState({
-        merkleProofManualAddressFeedbackMessage: 'The given address is not in the whitelist, please double-check.',
-      });
-
-      return;
-    }
-
-    navigator.clipboard.writeText(merkleProof);
-
-    this.setState({
-      merkleProofManualAddressFeedbackMessage: 
-      <>
-        <strong>Congratulations!</strong> <span className="emoji">🎉</span><br />
-        Your Merkle Proof <strong>has been copied to the clipboard</strong>. You can paste it into <a href={this.generateContractUrl()} target="_blank">{this.state.networkConfig.blockExplorer.name}</a> to claim your tokens.
-      </>,
-    });
   }
 
   render() {
@@ -163,8 +122,6 @@ export default class Dapp extends React.Component<Props, State> {
                   maxSupply={this.state.maxSupply}
                   totalSupply={this.state.totalSupply}
                   isPaused={this.state.isPaused}
-                  isWhitelistMintEnabled={this.state.isWhitelistMintEnabled}
-                  isUserInWhitelist={this.state.isUserInWhitelist}
                 />
                 {this.state.totalSupply < this.state.maxSupply ?
                   <MintWidget
@@ -174,10 +131,7 @@ export default class Dapp extends React.Component<Props, State> {
                     tokenPrice={this.state.tokenPrice}
                     maxMintAmountPerTx={this.state.maxMintAmountPerTx}
                     isPaused={this.state.isPaused}
-                    isWhitelistMintEnabled={this.state.isWhitelistMintEnabled}
-                    isUserInWhitelist={this.state.isUserInWhitelist}
                     mintTokens={(mintAmount) => this.mintTokens(mintAmount)}
-                    whitelistMintTokens={(mintAmount) => this.whitelistMintTokens(mintAmount)}
                   />
                   :
                   <div className="collection-sold-out">
@@ -210,20 +164,6 @@ export default class Dapp extends React.Component<Props, State> {
               <br />
               Keep safe! <span className="emoji">❤️</span>
             </div>
-
-            {!this.isWalletConnected() || this.state.isWhitelistMintEnabled ?
-              <div className="merkle-proof-manual-address">
-                <h2>Whitelist Proof</h2>
-                <p>
-                  Anyone can generate the proof using any public address in the list, but <strong>only the owner of that address</strong> will be able to make a successful transaction by using it.
-                </p>
-
-                {this.state.merkleProofManualAddressFeedbackMessage ? <div className="feedback-message">{this.state.merkleProofManualAddressFeedbackMessage}</div> : null}
-
-                <label htmlFor="merkle-proof-manual-address">Public address:</label>
-                <input id="merkle-proof-manual-address" type="text" placeholder="0x000..." disabled={this.state.userAddress !== null} value={this.state.userAddress ?? this.state.merkleProofManualAddress} ref={(input) => this.merkleProofManualAddressInput = input!} onChange={() => {this.setState({merkleProofManualAddress: this.merkleProofManualAddressInput.value})}} /> <button onClick={() => this.copyMerkleProofToClipboard()}>Generate and copy to clipboard</button>
-              </div>
-              : null}
           </div>
           : null}
       </>
@@ -324,8 +264,6 @@ export default class Dapp extends React.Component<Props, State> {
       maxMintAmountPerTx: (await this.contract.maxMintAmountPerTx()).toNumber(),
       tokenPrice: await this.contract.cost(),
       isPaused: await this.contract.paused(),
-      isWhitelistMintEnabled: await this.contract.whitelistMintEnabled(),
-      isUserInWhitelist: Whitelist.contains(this.state.userAddress ?? ''),
     });
   }
 

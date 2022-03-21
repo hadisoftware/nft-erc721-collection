@@ -5,10 +5,10 @@ import CollectionConfig from './CollectionConfig';
 const ContractArguments = [
   CollectionConfig.tokenName,
   CollectionConfig.tokenSymbol,
-  utils.parseEther(CollectionConfig.whitelistSale.price.toString()),
+  utils.parseEther(CollectionConfig.publicSale.price.toString()),
   CollectionConfig.maxSupply,
-  CollectionConfig.whitelistSale.maxMintAmountPerTx,
-  CollectionConfig.hiddenMetadataUri,
+  CollectionConfig.publicSale.maxMintAmountPerTx,
+  CollectionConfig.uriPrefix,
 ] as const;
 
 export default ContractArguments;
