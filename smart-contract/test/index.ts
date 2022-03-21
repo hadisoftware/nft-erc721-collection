@@ -69,9 +69,10 @@ describe(CollectionConfig.contractName, function () {
     expect(await contract.balanceOf(await externalUser.getAddress())).to.equal(0);
   });
     
-  it('Pre-sale (same as public sale)', async function () {
+  it('Public sale', async function () {
     await contract.setMaxMintAmountPerTx(CollectionConfig.publicSale.maxMintAmountPerTx);
     await contract.setPaused(false);
+    await contract.connect(whitelistedUser).mint(1, {value: getPrice(SaleType.PUBLIC_SALE, 1)},); // Replaces previous whitelisted test
     await contract.connect(holder).mint(2, {value: getPrice(SaleType.PUBLIC_SALE, 2)});
     await contract.connect(whitelistedUser).mint(1, {value: getPrice(SaleType.PUBLIC_SALE, 1)});
     // Sending insufficient funds
