@@ -16,8 +16,8 @@ const CollectionConfig: CollectionConfigInterface = {
     price: 0.03,
     maxMintAmountPerTx: 100,
   },
-  contractAddress: '0xbEe6A77bB4078A37dBAF2729d3028d398FB720Ad',
-  uriPrefix: 'ipfs://bafybeihdultow5k4rqlb4zibpwmuk5ergtdkbxf2qb2lnogpie4ancddfa/',
+  contractAddress: null,
+  uriPrefix: 'ipfs://__CID__/',
   marketplaceIdentifier: 'quran-verses',
   marketplaceConfig: openSea,
 };

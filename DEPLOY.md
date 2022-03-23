@@ -7,7 +7,7 @@
 3. Run `node index.js`
 
 ## Smart Contract
-1. Add `.env` file
+1. Add `.env` file and update values
 2. Use Node version 16 and run `yarn`
 3. Update `CollectionConfig.ts`
 4. In separate terminal:
@@ -21,7 +21,7 @@
 
 ## Minting Dapp
 1. Use Node latest for and run `yarn`
-2. Run `yarn dev-server`
+2. Run `yarn dev-server` to test locally
 3. Run `yarn build` and deploy `public` folder
 
 ## OpenSea
