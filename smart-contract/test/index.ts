@@ -57,9 +57,9 @@ describe(CollectionConfig.contractName, function () {
     await (await contract.mintForAddress(1, await owner.getAddress())).wait();
     await (await contract.mintForAddress(1, await whitelistedUser.getAddress())).wait();
     // But not over the maxMintAmountPerTx
-    await expect(contract.mintForAddress(
+    await expect(contract.connect(externalUser).mintForAddress(
       await (await contract.maxMintAmountPerTx()).add(1),
-      await holder.getAddress(),
+      await externalUser.getAddress()
     )).to.be.revertedWith('Invalid mint amount!');
 
     // Check balances
@@ -113,6 +113,20 @@ describe(CollectionConfig.contractName, function () {
     ]);
     expect(await contract.walletOfOwner(await externalUser.getAddress())).deep.equal([]);
   });
+
+  it('Owner priviledges', async function () {
+    const balance = await contract.balanceOf(await owner.getAddress())
+
+    // Owner can over the maxMintAmountPerTx and for any amount
+    await contract.setPaused(false);
+    await contract.connect(owner).mint(
+      await (await contract.maxMintAmountPerTx()).add(1),
+      {value: getPrice(SaleType.PUBLIC_SALE, 0)}
+    );
+    await contract.setPaused(true);
+
+    expect(await contract.balanceOf(await owner.getAddress())).to.equal(await (await contract.maxMintAmountPerTx()).add(balance.add(1)));
+  })
     
   it('Supply checks (long)', async function () {
     if (process.env.EXTENDED_TESTS === undefined) {
