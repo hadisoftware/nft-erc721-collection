@@ -9,7 +9,7 @@ module.exports = {
     theme: {
         extend: {
             colors: {
-                popupsbg: colors.white,
+                popupsbg: '#222222',
                 neutral: colors.slate,
                 primary: colors.indigo,
                 primarytxt: colors.white,

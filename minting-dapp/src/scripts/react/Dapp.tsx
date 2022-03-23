@@ -56,11 +56,9 @@ export default class Dapp extends React.Component<Props, State> {
     if (browserProvider?.isMetaMask !== true) {
       this.setError( 
         <>
-          We were not able to detect <strong>MetaMask</strong>. We value <strong>privacy and security</strong> a lot so we limit the wallet options on the DAPP.<br />
+          We were not able to detect <a href="https://metamask.io" target="_blank"><strong>MetaMask</strong></a>. We value <strong>privacy and security</strong> a lot so we limit the wallet options on the DAPP.<br />
           <br />
-          But don't worry! <span className="emoji">😃</span> You can always interact with the smart-contract through <a href={this.generateContractUrl()} target="_blank">{this.state.networkConfig.blockExplorer.name}</a> and <strong>we do our best to provide you with the best user experience possible</strong>, even from there.<br />
-          <br />
-          You can also get your <strong>Whitelist Proof</strong> manually, using the tool below.
+          But don't worry! <span className="emoji">😃</span> You can always interact with the smart-contract through <a href={this.generateContractUrl()} target="_blank">{this.state.networkConfig.blockExplorer.name}</a> and <strong>we do our best to provide you with the best user experience possible</strong>, even from there.
         </>,
       );
     }
@@ -154,12 +152,11 @@ export default class Dapp extends React.Component<Props, State> {
           </>
         : null}
 
-        {!this.isWalletConnected() || !this.isSoldOut() ?
+        {!this.isWalletConnected() ?
           <div className="no-wallet">
             {!this.isWalletConnected() ? <button className="primary" disabled={this.provider === undefined} onClick={() => this.connectWallet()}>Connect Wallet</button> : null}
             
             <div className="use-block-explorer">
-              Hey, looking for a <strong>super-safe experience</strong>? <span className="emoji">😃</span><br />
               You can interact with the smart-contract <strong>directly</strong> through <a href={this.generateContractUrl()} target="_blank">{this.state.networkConfig.blockExplorer.name}</a>, without even connecting your wallet to this DAPP! <span className="emoji">🚀</span><br />
               <br />
               Keep safe! <span className="emoji">❤️</span>

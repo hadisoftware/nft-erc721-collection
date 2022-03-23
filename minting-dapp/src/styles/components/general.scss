@@ -3,13 +3,13 @@ body {
   @apply min-h-screen;
 
   @apply font-sans;
-  @apply text-neutral-800;
-  @apply bg-gradient-to-b from-neutral-100 via-neutral-100 to-neutral-200;
+  @apply text-slate-200;
+  @apply bg-neutral-600;
 }
 
 a, a:link, a:visited {
   @apply font-semibold;
-  @apply text-primary-600;
+  @apply text-primary-400;
 
   &:hover {
     @apply underline;
@@ -81,7 +81,7 @@ button {
   @apply shadow-sm;
 
   &:hover {
-    @apply bg-neutral-100;
+    @apply bg-neutral-700;
   }
 
   &.primary {

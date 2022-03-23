@@ -56,7 +56,7 @@ export default class MintWidget extends React.Component<Props, State> {
         {this.canMint() ?
           <div className="mint-widget">
             <div className="preview">
-              <img src="/build/images/preview.png" alt="Collection preview" />
+              <img src="build/images/preview.png" alt="Collection preview" />
             </div>
 
             <div className="price">
