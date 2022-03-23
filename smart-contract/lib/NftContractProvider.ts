@@ -1,8 +1,8 @@
-// The name below ("IpsumNFT") should match the name of your Solidity contract.
+// The name below ("QuranNFT") should match the name of your Solidity contract.
 // It can be updated using the following command:
 // yarn rename-contract NEW_CONTRACT_NAME
 // Please DO NOT change it manually!
-import { IpsumNFT as ContractType } from '../typechain/index';
+import { QuranNFT as ContractType } from '../typechain/index';
 
 import { ethers } from 'hardhat';
 import CollectionConfig from './../config/CollectionConfig';

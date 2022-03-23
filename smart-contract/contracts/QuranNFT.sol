@@ -6,7 +6,7 @@ import 'erc721a/contracts/ERC721A.sol';
 import '@openzeppelin/contracts/access/Ownable.sol';
 import '@openzeppelin/contracts/security/ReentrancyGuard.sol';
 
-contract IpsumNFT is ERC721A, Ownable, ReentrancyGuard {
+contract QuranNFT is ERC721A, Ownable, ReentrancyGuard {
   using Strings for uint256;
 
   string public uriPrefix = '';
@@ -33,13 +33,18 @@ contract IpsumNFT is ERC721A, Ownable, ReentrancyGuard {
   }
 
   modifier mintCompliance(uint256 _mintAmount) {
-    require(_mintAmount > 0 && _mintAmount <= maxMintAmountPerTx, 'Invalid mint amount!');
+    require(_mintAmount > 0, 'Must specify a mint amount!');
+    if (msg.sender != owner()) {
+      require(_mintAmount <= maxMintAmountPerTx, 'Invalid mint amount!');
+    }
     require(totalSupply() + _mintAmount <= maxSupply, 'Max supply exceeded!');
     _;
   }
 
   modifier mintPriceCompliance(uint256 _mintAmount) {
-    require(msg.value >= cost * _mintAmount, 'Insufficient funds!');
+    if (msg.sender != owner()) {
+      require(msg.value >= cost * _mintAmount, 'Insufficient funds!');
+    }
     _;
   }
 
