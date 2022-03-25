@@ -159,6 +159,9 @@ export default class Dapp extends React.Component<Props, State> {
             <div className="use-block-explorer">
               You can interact with the smart-contract <strong>directly</strong> through <a href={this.generateContractUrl()} target="_blank">{this.state.networkConfig.blockExplorer.name}</a>, without even connecting your wallet to this DAPP! <span className="emoji">🚀</span><br />
               <br />
+              <h3>Contract address:</h3>
+              <div className="contract-address">{CollectionConfig.contractAddress}</div>
+              <br />
               Keep safe! <span className="emoji">❤️</span>
             </div>
           </div>
