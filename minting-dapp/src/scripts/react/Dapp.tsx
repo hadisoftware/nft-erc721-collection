@@ -119,26 +119,27 @@ export default class Dapp extends React.Component<Props, State> {
         {this.state.errorMessage ? <div className="error"><p>{this.state.errorMessage}</p><button onClick={() => this.setError()}>Close</button></div> : null}
 
         {this.isMinting() ?
-          <div className="minting-status">
-            View the transaction status directly on the blockchain:
-            <br />
-            <a href={this.generateTransactionUrl()} target="_blank">Transaction</a>
-            <br />
-            Once complete, view the minted VERSE in many ways:
-            <ul>
-              <li><a href="https://etherscan.io/nft/0xe136cee2cb44eadd3019c9806479cb9ab5f8dae7/896" target="_blank">Etherscan</a></li>
-              <li><a href="https://opensea.io" target="_blank">OpenSea</a></li>
-              <li><a href="https://metamask.app.link/skAH3BaF99" target="_blank">MetaMask</a></li>
-              <li><a href="https://rainbow.me" target="_blank">Rainbow</a></li>
-            </ul>
-            <br />
-            We suggest listing the NFT verse for sale on OpenSea for dawaa purposes on such a large marketplace.
-            In addition, we receive 10% creator royalty fees on subsequent sales to help further our crowdfunding efforts.
-            If the NFT sells, feel free to return here to mint another verse to support our cause and spread the message.
+          <div className="mint-initiated">
+            <p>
+              View the <a href={this.generateTransactionUrl()} target="_blank">transaction status</a> directly on the blockchain.
+              Once complete, view the minted VERSE in many ways:
+            </p>
+            <p>
+              <ul>
+                <li><a href={this.generateContractUrl()} target="_blank">Etherscan</a></li>
+                <li><a href={this.generateMarketplaceUrl()} target="_blank">OpenSea</a></li>
+                <li><a href="https://metamask.app.link/skAH3BaF99" target="_blank">MetaMask</a></li>
+                <li><a href="https://rainbow.me" target="_blank">Rainbow</a></li>
+              </ul>
+            </p>
+            <p>
+              We suggest listing the NFT verse for sale on OpenSea for dawaa purposes on such a large marketplace.
+              In addition, we receive 10% creator royalty fees on subsequent sales to help further our crowdfunding efforts.
+              If the NFT sells, feel free to return here to mint another verse to support our cause and spread the message.
+            </p>
+            <button onClick={() => window.location.reload()}>Mint Another</button>
           </div>
-          : null}
-        
-        {this.isWalletConnected() ?
+          : this.isWalletConnected() ?
           <>
             {this.isContractReady() ?
               <>

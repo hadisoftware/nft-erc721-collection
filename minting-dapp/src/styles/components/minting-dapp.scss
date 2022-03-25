@@ -3,6 +3,7 @@
   @apply mt-6 mx-auto;
   @apply w-full;
   @apply max-w-lg;
+  @apply text-base;
 
   .no-wallet {
     @apply flex flex-col;
@@ -127,16 +128,28 @@
     }
   }
 
-  .minting-status {
+  .mint-initiated {
     @apply flex flex-col;
     @apply rounded-lg;
     @apply p-3;
-    
     @apply text-sm;
     @apply bg-green-50;
     @apply border border-green-200;
     @apply shadow;
     @apply text-green-700;
+
+    p {
+      @apply py-2;
+    }
+
+    ul {
+      @apply list-disc;
+      @apply list-inside;
+    }
+
+    button {
+      @apply text-white
+    }
 
     &::before {
       content: 'Mint Initiated!';
