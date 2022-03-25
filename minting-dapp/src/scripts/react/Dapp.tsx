@@ -133,8 +133,8 @@ export default class Dapp extends React.Component<Props, State> {
             </ul>
             <br />
             We suggest listing the NFT verse for sale on OpenSea for dawaa purposes on such a large marketplace.
-            In addition, we receive 10% creator royalty fees subsequent sales to help further our crowdfunding efforts.
-            If your NFT sells, feel free to return here to mint another verse to support our cause and spread the message.
+            In addition, we receive 10% creator royalty fees on subsequent sales to help further our crowdfunding efforts.
+            If the NFT sells, feel free to return here to mint another verse to support our cause and spread the message.
           </div>
           : null}
         
