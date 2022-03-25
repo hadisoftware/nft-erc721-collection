@@ -127,6 +127,25 @@
     }
   }
 
+  .minting-status {
+    @apply flex flex-col;
+    @apply rounded-lg;
+    @apply p-3;
+    
+    @apply text-sm;
+    @apply bg-green-50;
+    @apply border border-green-200;
+    @apply shadow;
+    @apply text-green-700;
+
+    &::before {
+      content: 'Minting Initiated!';
+
+      @apply font-semibold;
+      @apply text-base;
+    }
+  }
+
   .mint-widget {
     @apply flex flex-col items-center;
     @apply rounded-lg;
