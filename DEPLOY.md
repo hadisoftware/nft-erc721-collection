@@ -28,3 +28,15 @@
 1. Create new collection and import contract
 2. Edit the collection with image, description, and royalty fee
 3. Create sales listing from each NFT
+
+---
+
+## NFT Details
+- Quran Verses NFT
+  - Contract: 
+  - Metadata: ipfs://bafybeiahslkecythtbscy4bwevjv4djsm45kvoe4q4vblnimqyc4vwqpca
+  - Images: ipfs://bafybeiho4vmzj7fpi4uvluvsc4x3wl5wkf6gqzmw52legr5pgkbevuizzi
+- 99 Names of Allah NFT
+  - Contract: 
+  - Metadata: ipfs://bafybeidvrv3yec3jznffscccgmgsijc75ecsndorwjgxzjpdnrpulcxqea
+  - Images: ipfs://bafybeiaduh25tt2izab4zq2dsqcjyt5ilp3ujwcelvpaz2hgeioyy5dg4a
