@@ -8,17 +8,17 @@ const CollectionConfig: CollectionConfigInterface = {
   // The contract name can be updated using the following command:
   // yarn rename-contract NEW_CONTRACT_NAME
   // Please DO NOT change it manually!
-  contractName: 'QuranNFT',
-  tokenName: 'Quran Verse',
-  tokenSymbol: 'VERSE',
-  maxSupply: 6236,
+  contractName: 'Names99NFT',
+  tokenName: '99 Names of Allah',
+  tokenSymbol: 'NAME',
+  maxSupply: 99,
   publicSale: {
-    price: 0.03,
-    maxMintAmountPerTx: 100,
+    price: 0.1,
+    maxMintAmountPerTx: 20,
   },
-  contractAddress: '0x5BfeAE4450eF5a4D86A564A606Da66dDe5D18d34',
-  uriPrefix: 'ipfs://bafybeiahslkecythtbscy4bwevjv4djsm45kvoe4q4vblnimqyc4vwqpca/',
-  marketplaceIdentifier: 'quran-verse',
+  contractAddress: '0xE1B28a780FB0EDf0F1Bde2bF19140aa6fE5D2aFF',
+  uriPrefix: 'ipfs://bafybeidvrv3yec3jznffscccgmgsijc75ecsndorwjgxzjpdnrpulcxqea/',
+  marketplaceIdentifier: '99-names-of-Allah',
   marketplaceConfig: Marketplaces.openSea,
 };
 

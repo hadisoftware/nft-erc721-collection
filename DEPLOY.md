@@ -37,6 +37,6 @@
   - Metadata: ipfs://bafybeiahslkecythtbscy4bwevjv4djsm45kvoe4q4vblnimqyc4vwqpca
   - Images: ipfs://bafybeiho4vmzj7fpi4uvluvsc4x3wl5wkf6gqzmw52legr5pgkbevuizzi
 - 99 Names of Allah NFT
-  - Contract: 
+  - Contract: 0xE1B28a780FB0EDf0F1Bde2bF19140aa6fE5D2aFF
   - Metadata: ipfs://bafybeidvrv3yec3jznffscccgmgsijc75ecsndorwjgxzjpdnrpulcxqea
   - Images: ipfs://bafybeiaduh25tt2izab4zq2dsqcjyt5ilp3ujwcelvpaz2hgeioyy5dg4a

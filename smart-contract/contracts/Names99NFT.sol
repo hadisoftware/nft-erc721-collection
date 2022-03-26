@@ -6,7 +6,7 @@ import 'erc721a/contracts/ERC721A.sol';
 import '@openzeppelin/contracts/access/Ownable.sol';
 import '@openzeppelin/contracts/security/ReentrancyGuard.sol';
 
-contract QuranNFT is ERC721A, Ownable, ReentrancyGuard {
+contract Names99NFT is ERC721A, Ownable, ReentrancyGuard {
   using Strings for uint256;
 
   string public uriPrefix = '';
