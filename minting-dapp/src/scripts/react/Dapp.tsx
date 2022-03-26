@@ -56,9 +56,13 @@ export default class Dapp extends React.Component<Props, State> {
     if (browserProvider?.isMetaMask !== true) {
       this.setError( 
         <>
-          We were not able to detect <a href="https://metamask.io" target="_blank"><strong>MetaMask</strong></a>. We value <strong>privacy and security</strong> a lot so we limit the wallet options on the DAPP.<br />
-          <br />
-          But don't worry! <span className="emoji">😃</span> You can always interact with the smart-contract through <a href={this.generateContractUrl()} target="_blank">{this.state.networkConfig.blockExplorer.name}</a> and <strong>we do our best to provide you with the best user experience possible</strong>, even from there.
+          <p>
+            We were not able to detect <a href={this.generateMetaMaskUrl()} target="_blank"><strong>MetaMask</strong></a>. 
+            We value <strong>privacy and security</strong> so we limit the wallet options on the DAPP.
+          </p>
+          {this.isMobile() ?
+            <p>Already have it installed? <a href="https://metamask.app.link/dapp/quranplus.app/nft-mint"><strong>Long-press here</strong></a> and choose <strong>Open in "MetaMask"</strong> to interact within the in-app browser.</p>
+            : null}
         </>,
       );
     }
@@ -104,6 +108,18 @@ export default class Dapp extends React.Component<Props, State> {
   private isNotMainnet(): boolean
   {
     return this.state.network !== null && this.state.network.chainId !== CollectionConfig.mainnet.chainId;
+  }
+
+  private isMobile(): boolean
+  {
+    return /Android|iPhone|iPad/i.test(navigator.userAgent);
+  }
+
+  private generateMetaMaskUrl(): string
+  {
+    return this.isMobile()
+      ? 'https://metamask.app.link/skAH3BaF99'
+      : 'https://metamask.io';
   }
 
   render() {

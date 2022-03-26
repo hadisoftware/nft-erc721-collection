@@ -18,6 +18,11 @@
     @apply font-semibold;
   }
 
+  ul {
+    @apply list-disc;
+    @apply list-inside;
+  }
+
   main {
     @apply flex flex-col;
   }
@@ -46,6 +51,10 @@
 
       @apply font-semibold;
       @apply text-base;
+    }
+
+    p {
+      @apply py-2;
     }
 
     button {
