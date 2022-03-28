@@ -142,7 +142,7 @@ export default class Dapp extends React.Component<Props, State> {
             </p>
             <p>
               <ul>
-                <li><a href={this.generateContractUrl()} target="_blank">Etherscan</a></li>
+                <li><a href={this.generateTokenUrl()} target="_blank">Etherscan</a></li>
                 <li><a href={this.generateMarketplaceUrl()} target="_blank">OpenSea</a></li>
                 <li><a href="https://metamask.app.link/skAH3BaF99" target="_blank">MetaMask</a></li>
                 <li><a href="https://rainbow.me" target="_blank">Rainbow</a></li>
@@ -251,6 +251,11 @@ export default class Dapp extends React.Component<Props, State> {
     return this.state.mintedTransaction
       ? this.state.networkConfig.blockExplorer.generateTransactionUrl(this.state.mintedTransaction)
       : '#';
+  }
+
+  private generateTokenUrl(): string
+  {
+    return this.state.networkConfig.blockExplorer.generateTokenUrl(CollectionConfig.contractAddress!);
   }
 
   private generateMarketplaceUrl(): string

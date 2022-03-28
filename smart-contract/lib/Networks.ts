@@ -10,6 +10,7 @@ export const hardhatLocal: NetworkConfigInterface = {
     name: 'Block explorer (not available for local chains)',
     generateContractUrl: (contractAddress: string) => `#`,
     generateTransactionUrl: (transctionId: string) => `#`,
+    generateTokenUrl: (contractAddress: string) => `#`,
   },
 }
 
@@ -23,6 +24,7 @@ export const ethereumTestnet: NetworkConfigInterface = {
     name: 'Etherscan (Rinkeby)',
     generateContractUrl: (contractAddress: string) => `https://rinkeby.etherscan.io/address/${contractAddress}`,
     generateTransactionUrl: (transctionId: string) => `https://rinkeby.etherscan.io/tx/${transctionId}`,
+    generateTokenUrl: (contractAddress: string) => `https://rinkeby.etherscan.io/token/${contractAddress}`,
   },
 }
 
@@ -33,6 +35,7 @@ export const ethereumMainnet: NetworkConfigInterface = {
     name: 'Etherscan',
     generateContractUrl: (contractAddress: string) => `https://etherscan.io/address/${contractAddress}`,
     generateTransactionUrl: (transctionId: string) => `https://etherscan.io/tx/${transctionId}`,
+    generateTokenUrl: (contractAddress: string) => `https://etherscan.io/token/${contractAddress}`,
   },
 }
 
@@ -46,6 +49,7 @@ export const polygonTestnet: NetworkConfigInterface = {
     name: 'Polygonscan (Mumbai)',
     generateContractUrl: (contractAddress: string) => `https://mumbai.polygonscan.com/address/${contractAddress}`,
     generateTransactionUrl: (transctionId: string) => `https://mumbai.polygonscan.com/tx/${transctionId}`,
+    generateTokenUrl: (contractAddress: string) => `https://mumbai.polygonscan.com/token/${contractAddress}`,
   },
 }
 
@@ -56,5 +60,6 @@ export const polygonMainnet: NetworkConfigInterface = {
     name: 'Polygonscan',
     generateContractUrl: (contractAddress: string) => `https://polygonscan.com/address/${contractAddress}`,
     generateTransactionUrl: (transctionId: string) => `https://polygonscan.com/tx/${transctionId}`,
+    generateTokenUrl: (contractAddress: string) => `https://polygonscan.com/token/${contractAddress}`,
   },
 }

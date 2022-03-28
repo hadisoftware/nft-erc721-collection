@@ -5,5 +5,6 @@ export default interface NetworkConfigInterface {
     name: string;
     generateContractUrl: (contractAddress: string) => string;
     generateTransactionUrl: (transctionId: string) => string;
+    generateTokenUrl: (contractAddress: string) => string;
   };
 };
