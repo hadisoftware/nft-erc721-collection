@@ -129,32 +129,6 @@
     }
   }
 
-  .mint-initiated {
-    @apply flex flex-col;
-    @apply rounded-lg;
-    @apply p-3;
-    @apply text-sm;
-    @apply bg-green-50;
-    @apply border border-green-200;
-    @apply shadow;
-    @apply text-green-700;
-
-    p {
-      @apply py-2;
-    }
-
-    button {
-      @apply text-white
-    }
-
-    &::before {
-      content: 'Mint Initiated!';
-
-      @apply font-semibold;
-      @apply text-base;
-    }
-  }
-
   .mint-widget {
     @apply flex flex-col items-center;
     @apply rounded-lg;
@@ -210,6 +184,32 @@
       .primary {
         @apply border-0;
       }
+    }
+  }
+
+  .mint-initiated {
+    @apply flex flex-col;
+    @apply rounded-lg;
+    @apply p-3;
+    @apply text-sm;
+    @apply bg-green-50;
+    @apply border border-green-200;
+    @apply shadow;
+    @apply text-green-700;
+
+    p {
+      @apply py-2;
+    }
+
+    button {
+      @apply text-white
+    }
+
+    &::before {
+      content: 'Mint Initiated!';
+
+      @apply font-semibold;
+      @apply text-base;
     }
   }
 }
