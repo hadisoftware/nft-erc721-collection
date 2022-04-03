@@ -34,7 +34,7 @@
 ## NFT Details
 - Quran Verses NFT
   - Contract: 0x5BfeAE4450eF5a4D86A564A606Da66dDe5D18d34
-  - Metadata: ipfs://bafybeiahslkecythtbscy4bwevjv4djsm45kvoe4q4vblnimqyc4vwqpca
+  - Metadata: ipfs://bafybeibsmsdxqmayl6cfv52doiihbbky4to4iq4phnid75ur2wphmnysjm
   - Images: ipfs://bafybeiho4vmzj7fpi4uvluvsc4x3wl5wkf6gqzmw52legr5pgkbevuizzi
 - 99 Names of Allah NFT
   - Contract: 0xE1B28a780FB0EDf0F1Bde2bF19140aa6fE5D2aFF
